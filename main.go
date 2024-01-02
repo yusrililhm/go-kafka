@@ -9,25 +9,27 @@ import (
 	"github.com/confluentinc/confluent-kafka-go/v2/kafka"
 )
 
-var message = []struct {
-	id   int
-	name string
-}{
+type data struct {
+	Id   int    `json:"id"`
+	Name string `json:"name"`
+}
+
+var message = []data{
 	{
-		id:   1,
-		name: "hani",
+		Id:   1,
+		Name: "hani",
 	},
 	{
-		id:   2,
-		name: "haerin",
+		Id:   2,
+		Name: "haerin",
 	},
 	{
-		id:   3,
-		name: "hyein",
+		Id:   3,
+		Name: "hyein",
 	},
 	{
-		id:   4,
-		name: "minji",
+		Id:   4,
+		Name: "minji",
 	},
 }
 
@@ -69,7 +71,7 @@ func newProducer() {
 		}, nil)
 	}
 
-	producer.Flush(15 * 1000)
+	producer.Flush(2 * 1000)
 }
 
 func newConsumer() {
